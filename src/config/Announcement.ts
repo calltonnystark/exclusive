@@ -5,7 +5,7 @@
  */
 
 export const announcementConfig = {
-  enabled: false, // Toggle to show/hide announcement globally
+  enabled: true, // Toggle to show/hide announcement globally
   title: 'Important Announcement',
   message:
     'Welcome! The site will be undergoing maintenance on 2026-09-01. Some features may be temporarily unavailable.',
