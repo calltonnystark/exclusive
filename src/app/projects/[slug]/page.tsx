@@ -22,16 +22,12 @@ interface ProjectCaseStudyPageProps {
   }>;
 }
 
-// Generate static paths for all project case studies
 export async function generateStaticParams() {
   const slugs = getProjectCaseStudySlugs();
 
-  return slugs.map((slug) => ({
-    slug,
-  }));
+  return slugs.map((slug) => ({ slug }));
 }
 
-// Generate metadata for each project case study
 export async function generateMetadata({
   params,
 }: ProjectCaseStudyPageProps): Promise<Metadata> {
@@ -39,9 +35,7 @@ export async function generateMetadata({
   const caseStudy = await getProjectCaseStudyBySlug(slug);
 
   if (!caseStudy || !caseStudy.frontmatter.isPublished) {
-    return {
-      title: 'Project Not Found',
-    };
+    return { title: 'Project Not Found' };
   }
 
   const { title, description, image } = caseStudy.frontmatter;
@@ -81,7 +75,6 @@ export default async function ProjectCaseStudyPage({
   return (
     <Container className="py-16">
       <div className="space-y-12">
-        {/* Back Button */}
         <div>
           <Button
             variant="ghost"
@@ -99,19 +92,16 @@ export default async function ProjectCaseStudyPage({
           </Button>
         </div>
 
-        {/* Project Content */}
         <ProjectContent
           frontmatter={caseStudy.frontmatter}
           content={caseStudy.content}
         />
 
-        {/* Project Navigation */}
         <ProjectNavigation
           previous={navigation.previous}
           next={navigation.next}
         />
 
-        {/* Related Projects */}
         {relatedProjects.length > 0 && (
           <div className="space-y-6">
             <Separator />
@@ -151,8 +141,7 @@ export default async function ProjectCaseStudyPage({
                             >
                               {project.frontmatter.status
                                 .charAt(0)
-                                .toUpperCase() +
-                                project.frontmatter.status.slice(1)}
+                                .toUpperCase() + project.frontmatter.status.slice(1)}
                             </div>
                           </div>
                         </div>
@@ -162,7 +151,7 @@ export default async function ProjectCaseStudyPage({
                         <div className="flex flex-wrap gap-1">
                           {project.frontmatter.technologies
                             .slice(0, 3)
-                            .map((tech) => (
+                            .map((tech: string) => (
                               <span
                                 key={tech}
                                 className="bg-muted rounded px-2 py-1 text-xs"
@@ -185,7 +174,6 @@ export default async function ProjectCaseStudyPage({
           </div>
         )}
 
-        {/* Back to Projects CTA */}
         <div className="text-center">
           <Separator className="mb-8" />
           <Button asChild size="lg">
