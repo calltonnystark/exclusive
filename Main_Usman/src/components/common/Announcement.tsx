@@ -1,18 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { announcementConfig } from '@/config/Announcement';
 
 export default function Announcement() {
-  if (!announcementConfig.enabled) return null;
-
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    // Always show the announcement whenever the website is opened.
-    // No localStorage/sessionStorage is used, so every visitor sees it.
-    setVisible(true);
-  }, []);
+  const [visible, setVisible] = useState(announcementConfig.enabled);
 
   if (!visible) return null;
 
@@ -21,7 +13,7 @@ export default function Announcement() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pointer-events-none">
+    <div className="fixed inset-0 z-[9999] flex items-start justify-center pointer-events-none">
       <div className="m-4 w-full max-w-2xl pointer-events-auto rounded-md border bg-white/95 p-4 shadow-lg dark:bg-slate-900/95">
         <div className="flex items-start">
           <div className="flex-1 pr-4">
