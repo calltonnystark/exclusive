@@ -53,7 +53,7 @@ export const skillComponents = {
 
 export const heroConfig = {
   // Personal Information
-  name: 'Muhammad Samar',
+  name: 'Muhammad Usman Samar',
   title: 'I am a Cyber Security Analyst.',
   avatar: '/assets/logo.png',
 
