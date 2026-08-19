@@ -5,10 +5,11 @@
  */
 
 export const announcementConfig = {
-  enabled: true, // Toggle to show/hide announcement globally
+  enabled: true,
   title: 'Important Announcement',
   message:
     'Welcome! The site will be undergoing maintenance on 2026-09-01. Some features may be temporarily unavailable.',
-  // localStorage key used to remember that a visitor dismissed the announcement
-  localStorageKey: 'announcement_dismissed_v1',
+  // Increment this key when you want visitors who dismissed an older
+  // announcement to see the new announcement again.
+  localStorageKey: 'announcement_dismissed_v2',
 };
