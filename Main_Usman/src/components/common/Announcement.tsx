@@ -4,32 +4,19 @@ import React, { useEffect, useState } from 'react';
 import { announcementConfig } from '@/config/Announcement';
 
 export default function Announcement() {
-  // If globally disabled via config, don't render
   if (!announcementConfig.enabled) return null;
 
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    try {
-      const dismissed = localStorage.getItem(announcementConfig.localStorageKey);
-      if (!dismissed) {
-        // show popup on first load
-        setVisible(true);
-      }
-    } catch (e) {
-      // localStorage might be unavailable in some environments
-      setVisible(true);
-    }
+    // Always show the announcement whenever the website is opened.
+    // No localStorage/sessionStorage is used, so every visitor sees it.
+    setVisible(true);
   }, []);
 
   if (!visible) return null;
 
   const handleClose = () => {
-    try {
-      localStorage.setItem(announcementConfig.localStorageKey, '1');
-    } catch (e) {
-      // ignore
-    }
     setVisible(false);
   };
 
@@ -39,7 +26,10 @@ export default function Announcement() {
         <div className="flex items-start">
           <div className="flex-1 pr-4">
             <h4 className="text-lg font-semibold">{announcementConfig.title}</h4>
-            <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-300" dangerouslySetInnerHTML={{ __html: announcementConfig.message }} />
+            <p
+              className="mt-1 text-sm text-neutral-600 dark:text-neutral-300"
+              dangerouslySetInnerHTML={{ __html: announcementConfig.message }}
+            />
           </div>
 
           <button
