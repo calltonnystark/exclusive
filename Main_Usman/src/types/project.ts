@@ -46,3 +46,5 @@ export interface ProjectCaseStudyPreview {
   slug: string;
   frontmatter: ProjectCaseStudyFrontmatter;
 }
+
+// Keep the project types as explicit module exports for production builds.
