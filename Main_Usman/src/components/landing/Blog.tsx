@@ -5,7 +5,7 @@ import React from 'react';
 import { BlogCard } from '../blog/BlogCard';
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
-//import { Button } from '../ui/button';
+import { Button } from '../ui/button';
 
 export default function Blog() {
   const posts = getPublishedBlogPosts();
