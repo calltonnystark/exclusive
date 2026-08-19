@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next';
 import UmamiAnalytics from '@/components/analytics/UmamiAnalytics';
 import Footer from '@/components/common/Footer';
 import Navbar from '@/components/common/Navbar';
@@ -34,8 +35,8 @@ export default function RootLayout({
               {children}
               <OnekoCat />
               <Quote />
-              <Footer />
               <UmamiAnalytics />
+              <Analytics />
             </ReactLenis>
           </ThemeProvider>
         </body>
