@@ -93,7 +93,7 @@ export const heroConfig = {
 export const socialLinks = [
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/usmansamar/',
+    href: 'https://www.linkedin.com/',
     icon: <LinkedIn />,
   },
   {
